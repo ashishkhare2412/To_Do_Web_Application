@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    <h1>Task Page for {{ user.username }} </h1>
+    <table border="3" style="table-layout: fixed; width: 100%;">
+        {% if data %}
+            <tr>
+                <th>Task</th>
+                <th>Time</th>
+            </tr>
+            {% for d in data %}
+                <tr>
+                    <td>{{ d.task }}</td>
+                    <td>{{ d.time }}</td>
+                    <td><a href="{% url 'deletetask' pk=d.id %}" onclick="return confirm('r u sure ')">Delete</a></td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No Task</td>
+            </tr>
+        {% endif %}
+    </table>
+{% endblock %}

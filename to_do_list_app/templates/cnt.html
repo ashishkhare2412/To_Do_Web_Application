@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}
+create new task
+{% endblock %}
+{% block content %}
+<h1>Task Page</h1>
+<form method="POST" action="{% url 'cnt' %}">
+    {% csrf_token %}
+    <table>
+        {{ fm.as_table }}
+    </table>
+    <input type="submit" value="Add Task">
+</form>
+{{ msg }}
+{% endblock %}
